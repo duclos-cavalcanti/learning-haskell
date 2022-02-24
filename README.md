@@ -16,6 +16,8 @@
 Inspired by [this](https://github.com/joshcough/HaskellStarter#getting-started-with-this-project) awesome `haskell` starter project, 
 I made this small boilerplate *repo* to visualize and learn the possible ways to go about haskell projects and templates.
 
+Another great material just targeted at the haskell language is [this](https://github.com/joshcough/HaskellStarter#getting-started-with-this-project).
+
 <a name="deps"/>
 
 ## Dependencies
