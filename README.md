@@ -23,7 +23,7 @@ I made this small boilerplate *repo* to visualize and learn the possible ways to
 ```sh
 sudo pacman -S ghc ghc-static haskell cabal-install stack
 cabal install base
-cabal install github
+cabal install github # example of direct haskell installation, not needed here
 ```
 
 <a name="start"/>
@@ -82,7 +82,6 @@ $ stack ghc
 $ stack ghci
 $ stack runghc
 ```
-TODO
 
 <a name="repl"/>
 
