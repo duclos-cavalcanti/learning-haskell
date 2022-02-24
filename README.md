@@ -12,7 +12,7 @@
 
 <a name="Introduction"/>
 
-## Introduction
+## 1. Introduction
 Inspired by [this](https://github.com/joshcough/HaskellStarter#getting-started-with-this-project) awesome `haskell` starter project, 
 I made this small boilerplate *repo* to visualize and learn the possible ways to go about haskell projects and templates.
 
@@ -20,7 +20,7 @@ Another great material just targeted at the haskell language is [this](https://g
 
 <a name="deps"/>
 
-## Dependencies
+## 2. Dependencies
 ### Arch Linux
 ```sh
 sudo pacman -S ghc ghc-static haskell cabal-install stack
@@ -30,7 +30,7 @@ cabal install github # example of direct haskell installation, not needed here
 
 <a name="start"/>
 
-## Getting Started
+## 3. Getting Started
 
 <a name="build"/>
 
@@ -146,7 +146,7 @@ Haskell packages :)
 
 <a name="targets"/>
 
-## Targets
+## 4. Targets
 1. `make build`
 1. `make install`
 1. `make docs`
