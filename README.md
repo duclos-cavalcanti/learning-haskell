@@ -21,7 +21,9 @@ I made this small boilerplate *repo* to visualize and learn the possible ways to
 ## Dependencies
 ### Arch Linux
 ```sh
-sudo pacman -S ghc haskell cabal-install
+sudo pacman -S ghc ghc-static haskell cabal-install stack
+cabal install base
+cabal install github
 ```
 
 <a name="start"/>
@@ -64,6 +66,23 @@ $ cabal install
   * Normal installs executables in your project as well as the library. Location is by default `~/.cabal/bin`.
 
 This project is a working Cabal project, and this document explains the Cabal configuration, which is in `haskellstarter.cabal`. Let's get started by taking a quick peek at it, and we'll create a Haskell library.
+
+#### Stack
+This was the chosen build tool due to its easy configuration and wrapping around Cabal. Great starting 
+points are [here](https://docs.haskellstack.org/en/stable/README/) and [here](https://docs.haskellstack.org/en/stable/GUIDE/). Stack 
+facilitates the use of cabal to manage dependencies and can also sandbox builds.
+
+```sh
+$ stack new
+$ stack build
+$ stack exec
+$ stack test
+$ stack setup
+$ stack ghc 
+$ stack ghci
+$ stack runghc
+```
+TODO
 
 <a name="repl"/>
 
@@ -129,6 +148,7 @@ Haskell packages :)
 ## Targets
 1. `make build`
 1. `make install`
-1. `make repl`
 1. `make docs`
 1. `make test`
+1. `make clean`
+1. `make purge`

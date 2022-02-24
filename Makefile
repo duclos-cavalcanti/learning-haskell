@@ -1,6 +1,7 @@
 SHELL := /bin/bash
 
-CABAL ?= cabal
+STACK ?= stack
+CABAL ?= cabal --ghc-option=-dynamic
 FMT ?= cabal-fmt
 DIR ?= src
 
@@ -9,33 +10,47 @@ FLAGS ?=
 
 all:
 
-.PHONY: build
-build:
+.PHONY: clean
+clean:
+	rm -rf dist-newstyle/
+	$(STACK) clean
+
+.PHONY: cbuild
+cbuild: clean
 	$(CABAL) build
 
-.PHONY: install
-install:
+.PHONY: cinstall
+cinstall:
 	$(CABAL) install
 
-.PHONY: run
-run: build
-	@./$(PROJECT)
+.PHONY: ctest
+ctest:
+	$(CABAL) test
+
+.PHONY: crepl
+crepl:
+	$(CABAL) repl
+
+.PHONY: purge
+purge:
+	@$(STACK) purge
+
+.PHONY: build
+build: clean
+	@$(STACK) build
 
 .PHONY: test
 test:
-	$(CABAL) test
+	@$(STACK) test
+
+.PHONY: run
+run:
+	@$(STACK) exec template-bin
 
 .PHONY: fmt
 fmt:
-	$(FMT) -w $(SRC)
-
-.PHONY: repl
-repl:
-	$(CABAL) repl
+	$(FMT) $(SRC)
 
 .PHONY: docs
 docs:
 	$(CABAL) haddock
-
-.PHONY: clean
-clean:
