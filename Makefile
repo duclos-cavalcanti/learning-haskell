@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 
 STACK ?= stack
-CABAL ?= cabal --ghc-option=-dynamic
+CABAL ?= cabal
 FMT ?= cabal-fmt
 DIR ?= src
 
@@ -12,24 +12,7 @@ all:
 
 .PHONY: clean
 clean:
-	rm -rf dist-newstyle/
 	$(STACK) clean
-
-.PHONY: cbuild
-cbuild: clean
-	$(CABAL) build
-
-.PHONY: cinstall
-cinstall:
-	$(CABAL) install
-
-.PHONY: ctest
-ctest:
-	$(CABAL) test
-
-.PHONY: crepl
-crepl:
-	$(CABAL) repl
 
 .PHONY: purge
 purge:
