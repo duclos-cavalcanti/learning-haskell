@@ -1,4 +1,4 @@
-# haskell-project-template
+# Learning Haskell
 
 1. [Introduction](#Introduction)
 2. [Dependencies](#deps)
@@ -7,16 +7,15 @@
     2. [REPL](#repl)
     3. [Test](#test)
     4. [Documentation](#docs)
-    5. [Research](#search)
-4. [Targets](#targets)
+    5. [Haskell Material](#search)
 
 <a name="Introduction"/>
 
 ## 1. Introduction
 Inspired by [this](https://github.com/joshcough/HaskellStarter#getting-started-with-this-project) awesome `haskell` starter project, 
-I made this small boilerplate *repo* to visualize and learn the possible ways to go about haskell projects and templates.
-
-Another great material just targeted at the haskell language is [this](https://github.com/joshcough/HaskellStarter#getting-started-with-this-project).
+I made this small *repo* to visualize and learn the possible ways to go about haskell projects and templates. The idea was to 
+partially make annotations about the tools and development process of a haskell project, but also make some boilerplate structure to the 
+project to go along with it.
 
 <a name="deps"/>
 
@@ -37,7 +36,7 @@ cabal install github # example of direct haskell installation, not needed here
 ### 1. Build
 #### Cabal
 Cabal (Common Architecture for Building Applications and Binaries) enables us to 
-build `haskell` libraries and programs. This is the standard tool for haskell projects.
+build `haskell` libraries and programs. This is the/one of the standard tool for haskell projects.
 [This](https://www.haskell.org/cabal/) is a great starting point to understand how to work with cabal.
 
 A few helpful commands for getting started with Cabal:
@@ -67,12 +66,26 @@ $ cabal install
   * Given `--only-dependencies`, it will install all your package's dependencies.  This is the recommended way to install new libraries to a project, as it will choose a version to install that is compatible with your other dependencies.
   * Normal installs executables in your project as well as the library. Location is by default `~/.cabal/bin`.
 
-This project is a working Cabal project, and this document explains the Cabal configuration, which is in `haskellstarter.cabal`. Let's get started by taking a quick peek at it, and we'll create a Haskell library.
+There is however an issue with dynamic vs static building with Cabal. By default it will try to build the project in a static manner, which will then require that specific libraries are 
+located within your system. This makes for a greater RAM usage and larger binaries. Also different OSes will make different choices on how to distribute the haskell packages. This ultimately means one 
+for an OS that only distribute dynamic libraries, one has to either install extra packages and change some many system configurations or settle to configure cabal to work with dynamic libraries. This is the case 
+for Arch Linux so the following lines have to be added/uncommented at the `~/.cabal/config`:
+```sh
+library-vanilla: False
+shared: True
+executable-dynamic: True
+program-default-options
+  ghc-options: -dynamic
+```
+
+After this, once can build the same project with `cabal build` even when using the stack-generated config.
 
 #### Stack
-This was the chosen build tool due to its easy configuration and wrapping around Cabal. Great starting 
+This is another option and was ultimately chosen due to its easy configuration and wrapping around Cabal. Great starting 
 points are [here](https://docs.haskellstack.org/en/stable/README/) and [here](https://docs.haskellstack.org/en/stable/GUIDE/). Stack 
-facilitates the use of cabal to manage dependencies and can also sandbox builds.
+facilitates the use of cabal to manage dependencies, sandbox builds and therefore resolves the `dynamic packaging` issue from Cabal above 
+without any configurations having to be made. This makes for this specific OS an easier choice and also one that can be done on any other 
+platform since stack has the sandboxing approach.
 
 ```sh
 $ stack new
@@ -128,7 +141,7 @@ TODO
 
 <a name="search"/>
 
-### 5. Haskell Research
+### 5. Haskell Material
 #### Hackage
 Haskell packages :)
 
@@ -144,12 +157,48 @@ Haskell packages :)
 - Documentation 
 - Links to source code
 
-<a name="targets"/>
+#### [Learn You a Haskell](http://learnyouahaskell.com/chapters)
+Great starting point to learn Haskell! Some examples of what it covers: 
+1. Introduction to the Haskell Paradigm (Chapter 1: Introduction)
+    - Purely Functional Programming
+    - Lazy Computations
+    - Statically Typed
 
-## 4. Targets
-1. `make build`
-1. `make install`
-1. `make docs`
-1. `make test`
-1. `make clean`
-1. `make purge`
+2. Basics (Chapter 2: Starting Out)
+    - Arithmetic
+    - Comparison/Booleans/if statements
+    - Bultin and Simple Functions
+    - Lists
+    - Ranges
+    - **List Comprehension**
+    - Tuples
+
+3. Types and Typeclasses (Chapter 3: Types and Typeclasses)
+    - `:t` and `::` (has type of)
+    - Different Types 
+    - Function Type declarations
+    - **Type Variable**
+    - Typeclasses (Interface that defines behavior, types belong to typeclasses)
+
+4. Functions (Chapter 4: Syntax in Functions)
+    - Pattern matching
+    - Guards, otherwise, where
+    - Let .. in Expressions
+    - Case Expressions
+
+5. Recursion (Chapter 5: Recursion)
+    - Concept
+    - Edge Conditions/Cases
+    - Edge Cases and Identities
+
+6. Higher Order Functions (Chapter 6: Higher Order Functions)
+    - Curried Functions
+    - Functons as first-class citzens (Functions returning Functions)
+    - Maps and Filters
+    - Lambdas
+    - Folds and Scans
+    - Functions with $ - Right Associative
+    - Function Composition
+
+7. Modules (Chapter 6: Modules)
+8. Custom Types and Typeclasses (Chapter 6: Making your own Types and Typeclasses)
