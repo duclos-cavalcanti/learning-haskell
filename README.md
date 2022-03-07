@@ -69,7 +69,7 @@ $ cabal install
 There is however an issue with dynamic vs static building with Cabal. By default it will try to build the project in a static manner, which will then require that specific libraries are 
 located within your system. This makes for a greater RAM usage and larger binaries. Also different OSes will make different choices on how to distribute the haskell packages. This ultimately means one 
 for an OS that only distribute dynamic libraries, one has to either install extra packages and change some many system configurations or settle to configure cabal to work with dynamic libraries. This is the case 
-for Arch Linux so the following lines have to be added/uncommented at the `~/.cabal/config`:
+for Arch Linux so the following lines have to be added/uncommented at the `~/.cabal/config`. More about this can be found [here](https://wiki.archlinux.org/title/Haskell#Static_linking).
 ```sh
 library-vanilla: False
 shared: True
